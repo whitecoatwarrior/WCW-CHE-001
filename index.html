@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuJD-NddcLbcaap_utAGs0yXcuVjaDFOUZn9SC1Cjs9h9jLrtGAiaiHDPq7e7H3tkZOg/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_CHE_007 = [
+    {
+        question: "A novel compound is observed to possess a significant experimentally determined dipole moment, despite its constituent atoms forming bonds with moderate electronegativity differences. This observation most directly implies which characteristic of its molecular architecture?",
+        options: [
+            "Its bond energy is exceptionally high due to enhanced covalent character.",
+            "Its electron density is perfectly symmetrical around the central atom.",
+            "It adopts a geometry that prevents the cancellation of individual bond dipoles.",
+            "The compound primarily exhibits ionic bonding characteristics rather than covalent."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: A non-zero dipole moment indicates that bond dipoles do not cancel, which is a direct consequence of an asymmetrical molecular geometry. For example, the document states H₂O has a dipole moment due to its angular shape where bond dipoles do not cancel, unlike linear CO₂ where they do."
+    },
+    {
+        question: "The experimental bond energy for a specific heteronuclear diatomic molecule is found to be considerably greater than the value calculated by averaging the bond energies of its homonuclear counterparts. This discrepancy primarily arises from a factor that also influences:",
+        options: [
+            "The degree of s-character in the hybrid orbitals of the bonded atoms.",
+            "The measured mean distance between the nuclei of the bonded atoms.",
+            "The total number of shared electron pairs between the atoms.",
+            "The extent of sidewise overlap between unhybridized p-orbitals."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document explains that the 'additional binding energy' in heteronuclear molecules like HCl is due to the polar nature of the bond, making it stronger. Polarity (due to electronegativity difference) also leads to a shortening of bond length in heteronuclear molecules compared to the sum of atomic radii. Thus, the factor causing higher bond energy (polarity) also influences bond length."
+    },
+    {
+        question: "In the context of Valence Bond Theory, the fundamental requirement for the formation of a stable covalent bond between two atoms is best described by the interaction of orbitals that:",
+        options: [
+            "Are completely filled and approach each other in a parallel fashion.",
+            "Contain a single electron each, with identical spin orientations.",
+            "Are half-filled and possess electrons with opposing spin states.",
+            "Are empty and undergo direct head-on collision to share a pair of electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: VBT core principles state that a covalent bond forms by the overlap of half-filled atomic orbitals, each with one electron, and these overlapping electrons must have opposite spins (Pauli exclusion principle)."
+    },
+    {
+        question: "Consider the comparative dipole moments of NH₃ and NF₃. The text highlights that NH₃ exhibits a greater dipole moment. This difference is most directly attributable to:",
+        options: [
+            "The larger atomic size of Nitrogen compared to Fluorine, leading to greater charge separation.",
+            "The absence of lone pairs on the central Nitrogen atom in NH₃, enhancing bond dipole summation.",
+            "The differing orientations and magnitudes of bond dipoles and lone pair contributions in each molecule.",
+            "The trigonal planar geometry of NF₃, causing perfect cancellation of bond moments."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document explicitly states, 'NH₃ has a greater dipole moment than NF₃, attributed to lone pair effects.' This implies that the interplay of bond dipoles and the dipole moment created by the lone pair(s) on the central atom (and their spatial arrangement) determines the net molecular dipole moment, leading to the observed difference."
+    },
+    {
+        question: "A molecule is predicted to have a linear geometry based on VSEPR theory. Consequently, its overall dipole moment is most likely to be zero. This outcome is primarily due to:",
+        options: [
+            "The central atom lacking any lone pairs of electrons.",
+            "The inherent non-polarity of all individual bonds within the molecule.",
+            "The symmetrical arrangement of polar bond dipoles, leading to their mutual cancellation.",
+            "The formation of only sigma bonds, precluding any pi bond contributions."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document states that CO₂ has zero dipole moment because of its linear structure where the two polar C=O bond moments act in opposite directions and cancel each other, making the molecule non-polar. This illustrates that a linear molecule with polar bonds can be non-polar if its geometry allows for symmetrical cancellation."
+    },
+    {
+        question: "The concept of hybridization was introduced to explain certain observed molecular characteristics that Valence Bond Theory, in its original form, could not adequately describe. Which of the following issues was hybridization primarily designed to address?",
+        options: [
+            "The paramagnetic behavior of diatomic oxygen molecules.",
+            "The identical nature of all C-H bonds in methane.",
+            "The formation of bonds in odd-electron species like H₂⁺.",
+            "The varying strengths between sigma and pi covalent bonds."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The purpose of hybridization is described as explaining 'how atoms form more bonds than their half-filled orbitals might suggest and how molecular geometries are achieved (e.g., all C-H bonds in methane are identical).' VBT alone would predict different bond types for C-H in methane without hybridization."
+    },
+    {
+        question: "An increase in the s-character of a hybrid orbital involved in bonding would generally lead to what observable change in the resulting chemical bond?",
+        options: [
+            "A decrease in its overall bond energy.",
+            "An increase in its susceptibility to chemical reactions.",
+            "A lengthening of the mean distance between the bonded nuclei.",
+            "An enhancement of its strength and a reduction in its length."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document states under Hybridization, 'Effect of s-character: Higher s-character in a hybrid orbital generally leads to stronger, shorter, and less reactive bonds.'"
+    },
+    {
+        question: "According to VSEPR theory, a central atom surrounded by three electron domains, where one domain is a lone pair and two are bonding pairs, would exhibit which fundamental arrangement of its electron pairs?",
+        options: [
+            "Tetrahedral",
+            "Linear",
+            "Trigonal planar",
+            "Trigonal pyramidal"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The total number of electron pairs (lone pairs + bond pairs) determines the electron geometry. With three electron pairs (2 bond pairs + 1 lone pair), the electron pairs arrange themselves in a trigonal planar fashion to minimize repulsion. The molecular shape (angular/bent) is derived from this electron geometry."
+    },
+    {
+        question: "The difference in electronegativity between two bonded atoms plays a crucial role in determining the nature of the bond. A bond exhibiting an electronegativity difference of 1.5 would be categorized as:",
+        options: [
+            "Predominantly ionic.",
+            "A non-polar covalent bond.",
+            "A polar covalent bond with significant ionic character.",
+            "A metallic bond with delocalized electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document specifies thresholds for ionic character: '0.4 - 1.7: Polar bond with some ionic character.' A difference of 1.5 falls within this range."
+    },
+    {
+        question: "Valence Bond Theory struggles to adequately describe the formation of certain types of chemical bonds. One significant limitation mentioned is its inability to account for:",
+        options: [
+            "The linear geometry observed in sp hybridized molecules.",
+            "The presence of both sigma and pi bonds in multiple bonds.",
+            "Bonds where both shared electrons originate from a single atom.",
+            "The strengthening of bonds due to greater s-orbital overlap."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Shortcomings of VBT,' it is stated that VBT 'Failed to explain the formation of coordinate covalent bonds,' which are bonds where both shared electrons originate from a single atom."
+    },
+    {
+        question: "In the context of bond characteristics, what is the primary factor responsible for the observed shortening of bond lengths in heteronuclear diatomic molecules compared to the sum of their individual covalent radii?",
+        options: [
+            "The larger size of one of the participating atomic orbitals.",
+            "The increased electron-electron repulsion between the bonded atoms.",
+            "The enhanced attractive forces due to polarity arising from electronegativity differences.",
+            "The formation of multiple pi bonds alongside a single sigma bond."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document states under Bond Length, 'Heteronuclear Diatomic Molecules: Bond length is *shortened* compared to the sum of individual covalent radii due to the increased difference in electronegativity, which creates polarity and stronger attractive forces between the polar ends.'"
+    },
+    {
+        question: "The VSEPR theory postulates that electron pairs in the valence shell of a central atom arrange themselves to achieve maximum separation. This arrangement is driven by the minimization of:",
+        options: [
+            "Attractive forces between the nucleus and bonding electrons.",
+            "The potential energy associated with bond vibration.",
+            "Repulsive interactions between the electron pairs.",
+            "The kinetic energy of the outermost electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: One of the core principles of VSEPR theory is that 'These electron pairs arrange themselves in space as far apart as possible to minimize repulsion and maximize distance, thus determining molecular geometry.'"
+    },
+    {
+        question: "A molecule with a central carbon atom forming four single bonds is described as having sp³ hybridization. This implies that the carbon atom has utilized:",
+        options: [
+            "One s orbital and two p orbitals to form three equivalent orbitals.",
+            "One s orbital and three p orbitals to form four equivalent orbitals.",
+            "Two s orbitals and two p orbitals to form four non-equivalent orbitals.",
+            "Only p orbitals, which overlap directly with other atoms."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: For sp³ hybridization, the document states, 'Process: One s orbital mixes with three p orbitals to form four equivalent sp³ hybrid orbitals.'"
+    },
+    {
+        question: "The paramagnetism of molecular oxygen (O₂) could not be explained by original Valence Bond Theory. This limitation suggests VBT's inadequacy in accounting for:",
+        options: [
+            "The bond angles in bent molecules like H₂O.",
+            "The existence of unpaired electrons in stable molecules.",
+            "The varying s-character in different hybrid orbitals.",
+            "The formation of multiple bonds via sigma and pi overlap."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Shortcomings of VBT,' it is stated that VBT 'Could not explain the paramagnetic nature of oxygen (which implies unpaired electrons).'"
+    },
+    {
+        question: "When considering the relative strengths of different types of electron pair repulsions according to VSEPR theory, which interaction would cause the most significant deviation from ideal bond angles in a molecule?",
+        options: [
+            "Bond pair-bond pair interactions (BP-BP).",
+            "Lone pair-bond pair interactions (LP-BP).",
+            "Lone pair-lone pair interactions (LP-LP).",
+            "Repulsions between nuclei of bonded atoms."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR theory section explicitly states the 'Repulsion Strength Order: Lone pair-Lone pair (LP-LP) > Lone pair-Bond pair (LP-BP) > Bond pair-Bond pair (BP-BP).' The strongest repulsion would cause the most deviation."
+    },
+    {
+        question: "In ethene (C₂H₄), each carbon atom forms three sp² hybrid orbitals and one unhybridized p-orbital. The unhybridized p-orbital plays a critical role in forming:",
+        options: [
+            "A single sigma bond with a hydrogen atom.",
+            "The C-C sigma bond along the internuclear axis.",
+            "The pi bond, perpendicular to the molecular plane.",
+            "An additional lone pair of electrons on the carbon."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: For sp² hybridization, the document explains, 'Unhybridized p-orbital: One p orbital remains unhybridized; it is perpendicular to the plane of the sp² orbitals and forms a pi (π) bond through sidewise overlap.' In C₂H₄, this forms the C-C pi bond."
+    },
+    {
+        question: "The statement 'Repulsion forces decrease with increasing bond angles' from VSEPR theory implies that larger bond angles are generally associated with:",
+        options: [
+            "Greater spatial proximity of electron pairs.",
+            "More significant lone pair contributions.",
+            "Reduced electron-electron repulsion.",
+            "An increase in molecular polarity."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR postulates state, 'Repulsion forces decrease with increasing bond angles.' This directly means that larger bond angles correlate with reduced electron-electron repulsion, as the electron pairs are further apart."
+    },
+    {
+        question: "A molecule is observed to contain a C≡C bond. Based on the characteristics described in the text, what is the expected hybridization state of each carbon atom participating in this bond?",
+        options: [
+            "sp³ hybridization, forming three pi bonds.",
+            "sp² hybridization, forming one sigma and one pi bond.",
+            "sp hybridization, forming one sigma and two pi bonds.",
+            "No hybridization, as p-orbitals are directly involved in the triple bond."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: For sp hybridization, the document states it forms 'one C-C sigma bond and uses its two unhybridized p-orbitals to form two C-C pi bonds. The C≡C triple bond consists of one sigma and two pi bonds.' This is characteristic of sp hybridization."
+    },
+    {
+        question: "The molecular geometry of SnCl₂ is described as angular (bent), with a bond angle reduced from the ideal 120°. This specific deviation from the ideal trigonal planar arrangement is primarily a consequence of:",
+        options: [
+            "The Sn atom undergoing sp³ hybridization.",
+            "The large atomic size of the Chlorine atoms.",
+            "The presence of a lone pair on the central Sn atom.",
+            "The strong electronegativity difference between Sn and Cl."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR section lists SnCl₂ under '2 Bond Pairs, 1 Lone Pair' leading to an 'Angular (bent) shape, bond angle reduced from 120°... due to LP-BP repulsion.' The presence of the lone pair is the direct cause of this reduction and bent shape."
+    },
+    {
+        question: "A bond that is formed by the linear overlap of half-filled atomic orbitals, resulting in electron density concentrated along the internuclear axis, is universally classified as a:",
+        options: [
+            "Coordinate covalent bond.",
+            "Pi (π) bond.",
+            "Ionic bond.",
+            "Sigma (σ) bond."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Sigma (σ) Bond,' it is defined as 'Formed by linear (head-on) overlap of half-filled atomic orbitals' and that 'Electron density is concentrated along the internuclear axis.'"
+    },
+    {
+        question: "The experimental determination of molecular dipole moments using an electric condenser relies on the principle that polar molecules will:",
+        options: [
+            "Form temporary covalent bonds with the condenser plates.",
+            "Align themselves in an applied electric field, reducing its strength.",
+            "Undergo instantaneous ionization, generating measurable current.",
+            "Exhibit increased vibrational energy in the presence of an electric field."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Definition of Dipole Moment,' it's stated, 'Measurement: Experimentally determined using an electric condenser. Polar molecules align in an electric field, causing a decrease in field strength, from which dipole moment is deduced.'"
+    },
+    {
+        question: "Considering the bond energy and bond length characteristics discussed, which type of carbon-carbon bond would exhibit the shortest bond length and the highest bond energy?",
+        options: [
+            "A C-C single bond.",
+            "A C=C double bond.",
+            "A C≡C triple bond.",
+            "All carbon-carbon bonds have equivalent lengths and energies."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document explicitly states: 'Carbon-Carbon Bonds: Bond energy order: C≡C > C=C > C-C' and 'Carbon-Carbon Bonds: Bond length order: C-C > C=C > C≡C'. Therefore, C≡C has the highest energy and shortest length."
+    },
+    {
+        question: "The VSEPR theory treats multiple bonds (double or triple) as a single 'electron pair domain' for the purpose of structural determination. This simplification implies that multiple bonds:",
+        options: [
+            "Exert stronger repulsive forces than lone pairs.",
+            "Do not influence the overall molecular geometry.",
+            "Occupy a single general region in space around the central atom.",
+            "Are considered to be purely ionic in nature."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: One of the VSEPR postulates states, 'For structural determination, multiple bonds (double or triple) are treated as a single 'electron pair domain.'' This means they are considered to occupy one region of space for geometry prediction, rather than each individual bond within the multiple bond being a separate domain."
+    },
+    {
+        question: "The existence of electron-deficient compounds, exemplified by many boron compounds, suggests that such species are typically characterized by:",
+        options: [
+            "An excess of valence electrons, leading to expanded octets.",
+            "A complete octet of electrons around the central atom.",
+            "Fewer than eight valence electrons around the central atom.",
+            "Strong metallic bonding interactions within the compound."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Additional Concepts,' it's stated, 'Electron-Deficient Compounds: Many boron compounds lack an octet of electrons (often having six), making them electron-deficient and acidic.'"
+    },
+    {
+        question: "Hydrogen bonds are described as flexible and easily broken by water and heat. This characteristic is particularly relevant to which biological phenomenon described in the text?",
+        options: [
+            "The formation of strong covalent bonds in DNA strands.",
+            "The process of cellular respiration in living organisms.",
+            "The temporary alteration of hair shape using water and heat.",
+            "The rigid structure of bone tissue in vertebrates."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The document states under 'Hydrogen Bonds,' 'Flexible bonds responsible for the shape of proteins like keratin in hair. Easily broken by water and heat, allowing temporary changes in hair shape (e.g., setting hair in rollers when wet). Re-bonding occurs upon drying, fixing the new shape.'"
+    },
+    {
+        question: "A pi (π) bond differs fundamentally from a sigma (σ) bond in its formation and electron density distribution. A key characteristic unique to a pi bond is that its electron density is primarily located:",
+        options: [
+            "Along the internuclear axis, creating maximum overlap.",
+            "In a spherical region surrounding the nucleus.",
+            "Above and below the internuclear axis, from sidewise overlap.",
+            "In discrete atomic orbitals prior to bond formation."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Pi (π) Bond,' it is described as 'Formed by sidewise or parallel overlap of half-filled p-orbitals' and 'Electron density is located above and below the internuclear axis, not along it.'"
+    },
+    {
+        question: "The dipole moment is mathematically defined as the product of the magnitude of charge and the distance between the centers of charges. Which SI unit accurately represents this quantity?",
+        options: [
+            "Debye (D).",
+            "Coulomb per meter (C/m).",
+            "Joule per mole (J.mol⁻¹).",
+            "Coulomb meter (Cm)."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Definition of Dipole Moment,' the document states, 'Units: Debye (D) is common, SI unit is Coulomb meter (Cm).'"
+    },
+    {
+        question: "The VBT's inability to account for the formation of odd-electron molecules or ions (e.g., H₂⁺) highlights a foundational assumption within the theory regarding the nature of covalent bonds, which is that:",
+        options: [
+            "All bonds must involve hybridized orbitals.",
+            "Covalent bonds are exclusively formed between atoms of different elements.",
+            "A covalent bond invariably consists of a shared pair of electrons.",
+            "Electron density is always concentrated away from the internuclear axis."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: VBT's core principles state, 'The shared electron pair is localized between the atoms and is responsible for the attractive force.' The failure to explain odd-electron species (which have an odd number of electrons, not a pair) directly stems from this assumption."
+    },
+    {
+        question: "When comparing the bond angles in CH₄ (109.5°), NH₃ (107.5°), and H₂O (104.5°), the progressive decrease in bond angle is best explained by:",
+        options: [
+            "An increase in the atomic radius of the central atom.",
+            "A decrease in the electronegativity of the surrounding atoms.",
+            "An increase in the number of lone pairs on the central atom, enhancing repulsive forces.",
+            "The transition from sp³ to sp² to sp hybridization."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR section provides these examples. CH₄ has 4 BP, NH₃ has 3 BP + 1 LP, H₂O has 2 BP + 2 LP. The bond angles decrease with increasing number of lone pairs, which exert stronger repulsion (LP-BP and LP-LP) than BP-BP interactions, compressing the bond angles."
+    },
+    {
+        question: "A molecule is described as having three sp² hybrid orbitals and one unhybridized p-orbital. This specific orbital configuration is characteristic of a central atom involved in forming a structure that is inherently:",
+        options: [
+            "Tetrahedral in geometry.",
+            "Linear with two pi bonds.",
+            "Trigonal planar with one pi bond.",
+            "Trigonal pyramidal with a lone pair."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: For sp² hybridization, the document states, 'Process: One s orbital mixes with two p orbitals to form three equivalent sp² hybrid orbitals.' And 'Orientation: The three sp² orbitals are oriented in a trigonal planar arrangement.' Also, 'One p orbital remains unhybridized... and forms a pi (π) bond.'"
+    },
+    {
+        question: "The concept of bond energy is described as the energy required to break one mole of bonds. A larger bond energy value is directly indicative of:",
+        options: [
+            "A weaker chemical bond that is easily broken.",
+            "A longer mean distance between the bonded nuclei.",
+            "A greater degree of electron delocalization in the bond.",
+            "A stronger chemical bond, more resistant to dissociation."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Bond Energy,' it states, 'Measure of Strength: Larger bond energy signifies a stronger chemical bond.'"
+    },
+    {
+        question: "In sp³ hybridization, the resulting hybrid orbitals possess a specific s-character. What is the approximate percentage of s-character in each sp³ hybrid orbital?",
+        options: [
+            "50%",
+            "33.33%",
+            "25%",
+            "75%"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'sp³ Hybridization,' it states, 'Character: 25% s-character, 75% p-character.'"
+    },
+    {
+        question: "The valence shell electron pair repulsion (VSEPR) theory suggests that the effect of a bonding electron pair on molecular geometry decreases with increasing electronegativity of the bonded atom. This implies that a more electronegative terminal atom will:",
+        options: [
+            "Cause the bond pair to occupy more space, increasing repulsion.",
+            "Draw the bonding electrons closer to itself, reducing their repulsive effect on other pairs.",
+            "Lead to the central atom forming additional lone pairs.",
+            "Promote the formation of multiple bonds instead of single bonds."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: One of the VSEPR postulates states, 'The effect of a bonding electron pair decreases with increasing electronegativity of the bonded atom.' If the effect decreases, it means the bond pair is less repulsive, which happens if the electrons are pulled closer to the terminal atom, reducing their spatial influence around the central atom."
+    },
+    {
+        question: "The process of mixing atomic orbitals of different energies and shapes to form a new set of equivalent hybrid orbitals is described as a fundamental concept in chemical bonding. The primary goal of this theoretical construct is to explain:",
+        options: [
+            "The inherent paramagnetism of certain molecules.",
+            "The existence of intermolecular hydrogen bonding.",
+            "The observed molecular geometries and bond equivalence.",
+            "The quantitative measurement of bond dissociation energies."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Hybridization, Definition and Purpose,' it states, 'Explains how atoms form more bonds than their half-filled orbitals might suggest and how molecular geometries are achieved (e.g., all C-H bonds in methane are identical).'"
+    },
+    {
+        question: "An ideal sp-hybridized molecule, such as ethyne (C₂H₂), is characterized by a specific bond angle. What is this ideal bond angle?",
+        options: [
+            "109.5°",
+            "120°",
+            "180°",
+            "90°"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'sp Hybridization,' it states, 'Orientation: The two sp orbitals are oriented linearly. Bond Angle: Ideal 180°.'"
+    },
+    {
+        question: "The document highlights that all single covalent bonds are fundamentally sigma bonds. This characteristic implies that the overlap occurring in any single bond is invariably of the:",
+        options: [
+            "Sidewise p-p type.",
+            "Linear (head-on) type.",
+            "Between a full orbital and a half-filled orbital.",
+            "Involving an unhybridized p-orbital."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Sigma (σ) Bond,' it states, 'Formed by linear (head-on) overlap of half-filled atomic orbitals' and 'All single covalent bonds are sigma bonds.' Combining these, all single bonds involve linear overlap."
+    },
+    {
+        question: "A substance with polar bonds is determined to have zero net dipole moment. This observation is most consistent with the substance having a molecular geometry that is:",
+        options: [
+            "Angular (bent), like H₂O.",
+            "Trigonal pyramidal, like NH₃.",
+            "Symmetrical, allowing for bond dipole cancellation.",
+            "Asymmetrical, leading to uncancelled bond dipoles."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Applications of Dipole Moment,' it states, 'General Rule: If bond dipoles in a molecule do not exactly cancel out, the molecule is polar. Symmetrical molecules often have zero net dipole moment.' CO₂ is given as an example of a symmetrical molecule with polar bonds but zero net dipole moment."
+    },
+    {
+        question: "One of the key distinctions between sigma (σ) and pi (π) bonds is their relative strength. Which statement accurately reflects this difference?",
+        options: [
+            "Pi bonds are generally stronger than sigma bonds due to greater orbital overlap.",
+            "Both sigma and pi bonds have equivalent strength, varying only in electron density location.",
+            "Sigma bonds are stronger than pi bonds because they result from maximum overlap.",
+            "Pi bonds can exist independently without a preceding sigma bond."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Sigma (σ) Bond,' it is stated, 'Results in maximum overlap, leading to a strong bond.' Under 'Pi (π) Bond,' it is stated, 'A weaker bond than sigma because the overlap is not as extensive.' It also adds that pi bonds 'Cannot exist without a sigma bond.'"
+    },
+    {
+        question: "The bond length of a homonuclear diatomic molecule, like Cl₂ (198 pm), is determined as the sum of its atomic radii. However, for a heteronuclear diatomic molecule, such as HCl, the experimental bond length (127 pm) is found to be shorter than the calculated sum of atomic radii (136 pm). This shortening is a direct result of:",
+        options: [
+            "Increased nuclear repulsion in heteronuclear molecules.",
+            "The greater kinetic energy of electrons in heteronuclear bonds.",
+            "Enhanced attractive forces due to bond polarity.",
+            "The formation of additional pi bonds in heteronuclear systems."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Heteronuclear Diatomic Molecules' in the Bond Length section, it states, 'Bond length is *shortened* compared to the sum of individual covalent radii due to the increased difference in electronegativity, which creates polarity and stronger attractive forces between the polar ends.'"
+    },
+    {
+        question: "According to the VSEPR theory, a molecule with four bond pairs and zero lone pairs around its central atom will adopt a specific electron geometry and molecular shape. Which option correctly identifies these characteristics?",
+        options: [
+            "Trigonal planar electron geometry, angular molecular shape.",
+            "Linear electron geometry, linear molecular shape.",
+            "Tetrahedral electron geometry, tetrahedral molecular shape.",
+            "Trigonal pyramidal electron geometry, trigonal pyramidal molecular shape."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR application table for 'Four Electron Pairs (Total)' states that for '4 Bond Pairs, 0 Lone Pairs (e.g., CH₄),' the shape is 'Tetrahedral shape, 109.5° bond angle.' In this case, electron geometry and molecular shape are the same."
+    },
+    {
+        question: "The VSEPR theory's emphasis on lone pairs occupying more space than bond pairs leads to a direct consequence for molecular geometry. This consequence is that lone pairs:",
+        options: [
+            "Always result in a linear molecular arrangement.",
+            "Cause a greater expansion of bond angles around the central atom.",
+            "Exert a stronger repulsive effect, compressing adjacent bond angles.",
+            "Are considered inert and have no impact on molecular shape."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR postulates clearly state, 'Lone pairs occupy more space than bond pairs, causing greater repulsion.' This greater repulsion forces bonding pairs closer, thus compressing bond angles from ideal values (e.g., in NH₃ and H₂O)."
+    },
+    {
+        question: "In the process of sp hybridization, two p orbitals remain unhybridized. These unhybridized p orbitals are crucial for forming which specific type of bond in molecules like ethyne (C₂H₂)?",
+        options: [
+            "A dative bond where one atom donates both electrons.",
+            "Two sigma (σ) bonds with terminal atoms.",
+            "Two pi (π) bonds, perpendicular to the linear sp orbitals.",
+            "One strong ionic bond with high electronegativity difference."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'sp Hybridization,' it states, 'Unhybridized p-orbitals: Two p orbitals remain unhybridized; they are perpendicular to the linear sp orbitals and form two pi (π) bonds through sidewise overlap.'"
+    },
+    {
+        question: "Valence Bond Theory makes a specific assumption regarding the electron occupancy of orbitals involved in forming covalent bonds. Which statement accurately reflects this assumption?",
+        options: [
+            "Orbitals must be completely empty to participate in bonding.",
+            "Full orbitals (with two paired electrons) are primarily involved in covalent bonding.",
+            "Only half-filled atomic orbitals with single electrons can overlap to form bonds.",
+            "Orbitals can only overlap if they have identical energy levels."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Core Principles/Assumptions (Heitler and London, 1927),' it states, 'A covalent bond forms by the overlap of *half-filled atomic orbitals* (each with one electron) from two atoms.' And also, 'Orbitals with two paired electrons (full orbitals) do not participate in bonding.'"
+    },
+    {
+        question: "For a molecule with three bond pairs and one lone pair around its central atom, VSEPR theory predicts a specific molecular shape. Which shape is predicted for such a configuration?",
+        options: [
+            "Tetrahedral",
+            "Trigonal pyramidal",
+            "Angular (bent)",
+            "Trigonal planar"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The VSEPR application table for 'Four Electron Pairs (Total)' states that for '3 Bond Pairs, 1 Lone Pair (e.g., NH₃, NF₃, PH₃),' the shape is 'Trigonal pyramidal shape.'"
+    },
+    {
+        question: "The VSEPR theory's primary goal is to predict the geometry of molecules. This prediction is fundamentally based on the concept that:",
+        options: [
+            "The total number of valence electrons dictates bond polarity.",
+            "Electrons are always delocalized across the entire molecule.",
+            "Electron pairs around a central atom repel each other and seek maximum separation.",
+            "All bonds in a molecule are of equal strength and length."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The first core principle of VSEPR is, 'Electron pairs (both lone pairs and bond pairs) in the valence shell of the central atom repel each other.' The second principle states, 'These electron pairs arrange themselves in space as far apart as possible to minimize repulsion and maximize distance, thus determining molecular geometry.'"
+    },
+    {
+        question: "A pi bond cannot exist without a preceding sigma bond. This statement implies a specific sequence in the formation of multiple bonds and a hierarchy of orbital overlaps. It suggests that:",
+        options: [
+            "Pi bonds are always formed by s-s orbital overlap.",
+            "Head-on overlap is a prerequisite for sidewise overlap.",
+            "Pi bonds are inherently stronger than sigma bonds.",
+            "Multiple bonds are formed exclusively by hybridized orbitals."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Pi (π) Bond,' it states, 'Cannot exist without a sigma bond.' Sigma bonds are formed by 'linear (head-on) overlap.' Therefore, head-on overlap (for sigma) must occur before sidewise overlap (for pi) can form additional bonds."
+    },
+    {
+        question: "The molecular geometry of BF₃ is described as trigonal planar, and despite having polar B-F bonds, the molecule is non-polar. This characteristic is a direct consequence of:",
+        options: [
+            "The presence of a lone pair on the central boron atom.",
+            "The exceptionally high bond energy of the B-F bonds.",
+            "The symmetrical arrangement of the three polar B-F bonds, leading to vector cancellation.",
+            "The boron atom undergoing sp hybridization."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Three Electron Pairs (Total), 3 Bond Pairs, 0 Lone Pairs,' it states, 'BF₃ is a non-polar molecule despite polar B-F bonds due to symmetry.' In a trigonal planar geometry, the bond dipoles are arranged symmetrically and cancel out."
+    },
+    {
+        question: "The concept of bond length is defined as the mean distance between the nuclei of two covalently bonded atoms. This distance is ultimately determined by:",
+        options: [
+            "The kinetic energy of the electrons involved in the bond.",
+            "The rate of electron transfer between the atoms.",
+            "The equilibrium between attractive and repulsive forces.",
+            "The difference in ionization energies of the bonded atoms."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: Under 'Bond Length,' it is stated, 'Nature: It's a result of the equilibrium between attractive and repulsive forces.'"
+    },
+    {
+        question: "When considering methane (CH₄), the carbon atom is described as sp³ hybridized. This hybridization model accounts for the observation that:",
+        options: [
+            "Methane contains one sigma bond and three pi bonds.",
+            "The C-H bonds in methane are all identical in length and strength.",
+            "Methane exhibits a trigonal planar molecular geometry.",
+            "The carbon atom in methane possesses an unhybridized p-orbital."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The purpose of hybridization includes explaining 'how molecular geometries are achieved (e.g., all C-H bonds in methane are identical).' The sp³ hybridization leads to four equivalent bonds, which explains their identical nature."
+    },
+    {
+        question: "The percentage of ionic character in a bond can be calculated using the ratio of the observed dipole moment to the calculated dipole moment for a 100% ionic bond. This formula implies that:",
+        options: [
+            "A purely covalent bond would have an observed dipole moment greater than its ionic counterpart.",
+            "The calculated dipole moment for a 100% ionic bond is always zero.",
+            "A bond with 100% ionic character would have an observed dipole moment equal to its theoretical ionic dipole moment.",
+            "The percentage of ionic character is inversely proportional to the electronegativity difference."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theroy as then reasoning for correct Options: The formula is 'Percentage of Ionic Character = (μ_observed / μ_ionic) × 100'. If a bond has 100% ionic character, then μ_observed must equal μ_ionic for the percentage to be 100."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-CHE-007';
+let quizData = quizData_WCW_CHE_007;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-CHE-007', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-CHE-007', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-CHE-007', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_CHE_007;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_CHE_007;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_CHE_007[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_CHE_007.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
